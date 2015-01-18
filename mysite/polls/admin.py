@@ -29,6 +29,8 @@ class PollAdmin(admin.ModelAdmin):
     list_display = ('question', 'pub_date', 'was_published_recently')
     #list list_filter
     list_filter = ['pub_date']
+    #search capabilities
+    search_fields = ['question']
 
 admin.site.register(Poll, PollAdmin)
 #'''
