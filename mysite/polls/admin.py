@@ -2,9 +2,19 @@ from django.contrib import admin
 from polls.models import Poll
 from polls.models import Choice
 
+#StackedInline
+'''
 class ChoiceInline(admin.StackedInline):
     model = Choice
     extra = 3
+#'''
+
+#TabularInline: less crowded
+#'''
+class ChoiceInline(admin.TabularInline):
+	model = Choice
+	extra = 3
+#'''
 
 #admin.site.register(Choice)
 
