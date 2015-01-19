@@ -6,12 +6,20 @@ from polls.models import Poll
 
 # Create your views here.
 def index(request):
+    #using render shortcut
+    #'''
+    latest_poll_list = Poll.objects.all().order_by('-pub_date')[:5]
+    context = {'latest_poll_list': latest_poll_list}
+    return render(request, 'polls/index.html', context)
+    #'''
+    '''
     latest_poll_list = Poll.objects.order_by('-pub_date')[:5]
     template = loader.get_template('polls/index.html')
     context = RequestContext(request, {
         'latest_poll_list': latest_poll_list,
     })
     return HttpResponse(template.render(context))
+    #'''
 
 def detail(request, poll_id):
     return HttpResponse("You're looking at poll %s." % poll_id)
